@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PROGRAMA_MEDIDAS_DESCRITIVAS
@@ -18,31 +12,35 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
         public Form1()
         {
             InitializeComponent();
+            LimparEfocar();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        void Adicionar()
         {
             listaNumeros.Add((double)numericUpDown1.Value);
-            Atualizar();
-            numericUpDown1.Value = 0;
+            richTextBox1.AppendText($"{listaNumeros[listaNumeros.Count - 1]} - ");
+            LimparEfocar();
         }
-
-        private void Atualizar()
+        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
         {
-            richTextBox1.Clear();
-
-            foreach(double numero in listaNumeros)
+            if(e.KeyValue == 13)
             {
-                richTextBox1.AppendText($"{numero}, ");
+                Adicionar();
             }
         }
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Adicionar();
+        }
+        private void LimparEfocar()
+        {
+            numericUpDown1.Value = 0;
+            numericUpDown1.Focus();
+            numericUpDown1.Select(0, 4);
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             mediaAritmetica = Calcula.MediaAritmetica(listaNumeros);
             mediana = Calcula.Mediana(listaNumeros);
-
-
             MessageBox.Show($"Media aritmética: {mediaAritmetica}\nMediana: {mediana}");
         }
         private void button2_Click(object sender, EventArgs e)

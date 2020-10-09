@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PROGRAMA_MEDIDAS_DESCRITIVAS
 {
@@ -13,7 +11,7 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
             double numerador = lista.Sum();
             double denominador = lista.Count();
 
-            return numerador / denominador;
+            return Math.Round(numerador / denominador, 2);
         }
 
         public static double Mediana(List<double> lista)
@@ -24,7 +22,7 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
             {
                 int posicao1 = (lista.Count / 2) - 1;
                 int posicao2 = (lista.Count / 2);
-                return (lista[posicao1] + lista[posicao2]) / 2;
+                return Math.Round((lista[posicao1] + lista[posicao2]) / 2.0, 2);
             }
             else
             {
