@@ -52,7 +52,11 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
             coeficienteDeVariacao = Calcula.CoeficienteDeVariacao(mediaAritmetica, desvioPadrao);
             homoOuHetero = Calcula.HomogenioOuHeterogenio(coeficienteDeVariacao);
 
-            MessageBox.Show($"Media aritmética: {mediaAritmetica}\nMediana: {mediana}\nVariância Amostral: {varianciaAmostral}\nDesvio Padrão: {desvioPadrao}\nCoeficiente de variação: {coeficienteDeVariacao}%\nConjunto de dados é: {homoOuHetero}");
+            Resultados resultados = new Resultados(mediaAritmetica, mediana, varianciaAmostral, desvioPadrao, coeficienteDeVariacao, homoOuHetero);
+            resultados.ShowDialog();
+
+
+            //MessageBox.Show($"Media aritmética: {mediaAritmetica}\nMediana: {mediana}\nVariância Amostral: {varianciaAmostral}\nDesvio Padrão: {desvioPadrao}\nCoeficiente de variação: {coeficienteDeVariacao}%\nConjunto de dados é: {homoOuHetero}");
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
