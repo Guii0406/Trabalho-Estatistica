@@ -13,7 +13,35 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
 
             return Math.Round(numerador / denominador, 2);
         }
-
+        public static double VarianciaAmostral(List<double> lista, double media)
+        {
+            double numerador = 0;
+            double denominador = lista.Count - 1;
+            foreach(double n in lista)
+            {
+                numerador += Math.Pow((n - media), 2);
+            }
+            return Math.Round(numerador / denominador, 2);
+        }
+        public static double DesvioPadrao(double varianciaAmostral)
+        {
+            return Math.Round(Math.Sqrt(varianciaAmostral), 2);
+        }
+        public static double CoeficienteDeVariacao(double media, double desvioPadrao)
+        {
+            return Math.Round((desvioPadrao / media) * 100, 2);
+        }
+        public static string HomogenioOuHeterogenio(double coeficiente)
+        {
+            if(coeficiente <= 30)
+            {
+                return "Homogênio";
+            }
+            else
+            {
+                return "Heterogênio";
+            }
+        }
         public static double Mediana(List<double> lista)
         {
             lista = lista.OrderBy(x => x).ToList();

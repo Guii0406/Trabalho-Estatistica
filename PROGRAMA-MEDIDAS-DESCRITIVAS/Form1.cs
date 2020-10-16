@@ -9,6 +9,10 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
         List<double> listaNumeros = new List<double>();
         double mediaAritmetica;
         double mediana;
+        double varianciaAmostral;
+        double desvioPadrao;
+        double coeficienteDeVariacao;
+        string homoOuHetero;
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +45,12 @@ namespace PROGRAMA_MEDIDAS_DESCRITIVAS
         {
             mediaAritmetica = Calcula.MediaAritmetica(listaNumeros);
             mediana = Calcula.Mediana(listaNumeros);
-            MessageBox.Show($"Media aritmética: {mediaAritmetica}\nMediana: {mediana}");
+            varianciaAmostral = Calcula.VarianciaAmostral(listaNumeros, mediaAritmetica);
+            desvioPadrao = Calcula.DesvioPadrao(varianciaAmostral);
+            coeficienteDeVariacao = Calcula.CoeficienteDeVariacao(mediaAritmetica, desvioPadrao);
+            homoOuHetero = Calcula.HomogenioOuHeterogenio(coeficienteDeVariacao);
+
+            MessageBox.Show($"Media aritmética: {mediaAritmetica}\nMediana: {mediana}\nVariância Amostral: {varianciaAmostral}\nDesvio Padrão: {desvioPadrao}\n Coeficiente de variação: {coeficienteDeVariacao}%\nConjunto de dados é: {homoOuHetero}");
         }
         private void button2_Click(object sender, EventArgs e)
         {
